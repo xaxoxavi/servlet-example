@@ -1,0 +1,53 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="user" class="com.esliceu.dwes.xavi.model.User"
+          scope="prototype"/>
+
+
+
+
+    <bean id="user1" class="com.esliceu.dwes.xavi.model.User">
+        <property name="name" value="Xavier"/>
+        <property name="familyName" value="Torrens"/>
+        <property name="password" value="qwerty"/>
+        <property name="email" value="xtorrens@esliceu.com"/>
+        <property name="photo" value="https://www.abc.es/media/estilo/2017/02/08/cara-kwm-U202521250342CmC-620x650@abc.jpg"/>
+    </bean>
+
+    <bean id="user2" class="com.esliceu.dwes.xavi.model.User">
+        <property name="name" value="Joan"/>
+        <property name="familyName" value="Galmes"/>
+        <property name="password" value="12345"/>
+        <property name="email" value="jgalmes@esliceu.com"/>
+        <property name="photo" value="https://i2.bssl.es/unomasenlafamilia/2017/09/Beb%C3%A9-con-cara-de-miedo.jpg"/>
+    </bean>
+
+    <bean id="user3" class="com.esliceu.dwes.xavi.model.User">
+        <property name="name" value="Marcos"/>
+        <property name="familyName" value="Valens"/>
+        <property name="password" value="pollo"/>
+        <property name="email" value="mvalens@esliceu.com"/>
+        <property name="photo" value="https://smoda.elpais.com/wp-content/uploads/images/201330/cara_delevingne_la_top_mil_caras_583068050.jpg"/>
+    </bean>
+
+    <bean id="userManager" class="com.esliceu.dwes.xavi.modules.ListUserManager">
+        <property name="users">
+            <list>
+                <ref local="user1"/>
+                <ref local="user2"/>
+                <ref local="user3"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="authenticator" class="com.esliceu.dwes.xavi.modules.ListAuthenticator">
+        <property name="entityManager" ref="userManager"/>
+    </bean>
+
+</beans>
